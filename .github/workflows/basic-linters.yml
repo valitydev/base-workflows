@@ -2,6 +2,11 @@ name: Basic linters
 
 on:
   workflow_call:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
 
 jobs:
   yamllint:
