@@ -25,3 +25,15 @@ jobs:
         uses: frenck/action-yamllint@v1
         with:
           warnings: false
+
+  hadolint:
+    name: hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code
+        uses: actions/checkout@v2
+
+      - name: 🚀 Run hadolint
+        uses: reviewdog/action-hadolint@v1
+        with:
+          filter_mode: nofilter
