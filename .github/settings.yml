@@ -1,2 +1,10 @@
 # These settings are synced to GitHub by https://probot.github.io/apps/settings/
 _extends: .github
+
+teams:
+  - name: devs
+    permission: push
+  - name: bots
+    permission: push
+  - name: maintainers
+    permission: push
