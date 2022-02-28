@@ -2,6 +2,12 @@ name: Auto-create new tags
 
 on:
   workflow_call:
+    inputs:
+      disable-additional-tags:
+        description: "Disable additional tags"
+        required: false
+        default: "false"
+        type: boolean
   push:
     branches:
       - master
@@ -20,4 +26,5 @@ jobs:
         uses: valitydev/action-autotag@v1
 
       - name: ➕ Add additional tags
+        if: inputs.disable-additional-tags == false
         uses: vweevers/additional-tags-action@v1
