@@ -1,10 +1,27 @@
-name: Vality basic linters
+name: Basic linters
 
 on:
+  workflow_call:
   pull_request:
+  push:
     branches:
-      - "*"
+      - master
+      - main
 
 jobs:
-  lint:
-    uses: valitydev/base-workflows/.github/workflows/basic-linters.yml@v1
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code
+        uses: actions/checkout@v2
+
+      - name: 📥 Download default yamllint configuration
+        uses: valitydev/action-download-file@v1
+        with:
+          url: https://raw.githubusercontent.com/valitydev/configurations/v1/linters/.yamllint
+
+      - name: 🚀 Run yamllint
+        uses: frenck/action-yamllint@v1
+        with:
+          warnings: false
