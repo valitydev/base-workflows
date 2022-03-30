@@ -21,6 +21,7 @@ jobs:
         uses: DovnarAlexander/github-action-file-detection@v0.3.0
         with:
           wildcard: "*.y*ml"
+          exit_code_not_found: 0
 
       - name: 📥 Download default yamllint configuration
         if: steps.find-yaml.outputs.found != ''
@@ -46,6 +47,7 @@ jobs:
         uses: DovnarAlexander/github-action-file-detection@v0.3.0
         with:
           wildcard: "*Dockerfile*"
+          exit_code_not_found: 0
 
       - name: 🚀 Run hadolint
         if: steps.find-dockerfile.outputs.found != ''
