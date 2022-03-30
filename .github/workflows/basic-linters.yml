@@ -18,7 +18,7 @@ jobs:
 
       - name: 🔍 Find YAML
         id: find-yaml
-        uses: DovnarAlexander/github-action-file-detection
+        uses: DovnarAlexander/github-action-file-detection@v0.3.0
         with:
           wildcard: "*.y*ml"
 
@@ -43,7 +43,7 @@ jobs:
 
       - name: 🔍 Find Dockerfile
         id: find-dockerfile
-        uses: DovnarAlexander/github-action-file-detection
+        uses: DovnarAlexander/github-action-file-detection@v0.3.0
         with:
           wildcard: "*Dockerfile*"
 
