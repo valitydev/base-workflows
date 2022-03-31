@@ -16,12 +16,41 @@ jobs:
       - name: ⤵️ Check out code
         uses: actions/checkout@v2
 
+      - name: 🔍 Find YAML
+        id: find-yaml
+        uses: DovnarAlexander/github-action-file-detection@v0.3.0
+        with:
+          wildcard: "*.y*ml"
+          exit_code_not_found: 0
+
       - name: 📥 Download default yamllint configuration
+        if: steps.find-yaml.outputs.found != ''
         uses: valitydev/action-download-file@v1
         with:
           url: https://raw.githubusercontent.com/valitydev/configurations/v1/linters/.yamllint
 
       - name: 🚀 Run yamllint
+        if: steps.find-yaml.outputs.found != ''
         uses: frenck/action-yamllint@v1
         with:
           warnings: false
+
+  hadolint:
+    name: hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code
+        uses: actions/checkout@v2
+
+      - name: 🔍 Find Dockerfile
+        id: find-dockerfile
+        uses: DovnarAlexander/github-action-file-detection@v0.3.0
+        with:
+          wildcard: "*Dockerfile*"
+          exit_code_not_found: 0
+
+      - name: 🚀 Run hadolint
+        if: steps.find-dockerfile.outputs.found != ''
+        uses: reviewdog/action-hadolint@v1
+        with:
+          filter_mode: nofilter
