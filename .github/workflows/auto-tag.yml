@@ -27,4 +27,4 @@ jobs:
 
       - name: ➕ Add additional tags
         if: inputs.disable-additional-tags == false
-        uses: vweevers/additional-tags-action@v1
+        uses: vweevers/additional-tags-action@v2
