@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 🔍 Find YAML
         id: find-yaml
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: 🔍 Find Dockerfile
         id: find-dockerfile
